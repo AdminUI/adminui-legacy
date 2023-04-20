@@ -1,0 +1,1 @@
+<v-btn type="submit" color="success">{{ $slot }}</v-btn>

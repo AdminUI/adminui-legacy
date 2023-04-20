@@ -1,0 +1,1 @@
+<v-btn type="submit" color="{{ $class ?? ''}}">{{ $name }}</v-btn>

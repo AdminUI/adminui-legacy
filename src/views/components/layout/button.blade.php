@@ -1,0 +1,1 @@
+<v-btn type="submit" :color='@json($class)'>{{ $name }}</v-btn>
