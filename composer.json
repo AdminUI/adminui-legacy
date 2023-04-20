@@ -2,7 +2,7 @@
   "name": "adminui/adminui-legacy",
   "description": "Legacy blade components for AdminUI applications",
   "type": "library",
-  "license": "Proprietry",
+  "license": "MIT",
   "authors": [
     {
       "name": "Kenny Turner",
