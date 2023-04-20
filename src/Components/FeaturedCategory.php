@@ -23,6 +23,7 @@ class FeaturedCategory extends Component
     {
         $this->categories = Category::orderBy('sort_order')
             ->where('is_featured', 1)
+            ->where('is_active', 1)
             ->limit($this->limit)
             ->get();
 
