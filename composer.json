@@ -1,0 +1,29 @@
+{
+  "name": "adminui/adminui-legacy",
+  "description": "Legacy blade components for AdminUI applications",
+  "type": "library",
+  "license": "Proprietry",
+  "authors": [
+    {
+      "name": "Kenny Turner",
+      "email": "k.turner@dsmdesign.co.uk"
+    },
+    {
+      "name": "Craig Riley",
+      "email": "c.riley@dsmdesign.co.uk"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "AdminUI\\AdminUILegacy\\": "src"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "AdminUI\\AdminUILegacy\\LegacyServiceProvider"
+      ]
+    }
+  }
+}
