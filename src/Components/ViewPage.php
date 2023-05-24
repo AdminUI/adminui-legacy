@@ -2,7 +2,7 @@
 
 namespace AdminUI\AdminUILegacy\Components;
 
-use AdminUI\AdminUI\Controllers\Page\Admin\WidgetController;
+use AdminUI\AdminUILegacy\Controllers\Page\Admin\WidgetController;
 use Illuminate\View\Component;
 
 class ViewPage extends Component
