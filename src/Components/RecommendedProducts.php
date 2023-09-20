@@ -23,7 +23,6 @@ class RecommendedProducts extends Component
 
     public function render()
     {
-        $liveProductClass = config('adminui.classes.live_product');
 
         if (empty($this->product->parent_id)) {
             $this->products = $this->product->alternatives;
@@ -33,6 +32,7 @@ class RecommendedProducts extends Component
 
         if ($this->products) {
             $this->products->transform(function ($row) {
+                $liveProductClass = config('adminui.classes.live_product');
                 $row->liveData = $liveProductClass::getLiveData($row);
 
                 return $row;

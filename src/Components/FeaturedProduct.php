@@ -21,7 +21,6 @@ class FeaturedProduct extends Component
 
     public function render()
     {
-        $liveProductClass = config('adminui.classes.live_product');
 
         $rows = cache()->remember('featuredproducts', 3600, function () {
             $rows = Product::where('is_active', 1)
@@ -33,6 +32,7 @@ class FeaturedProduct extends Component
         });
 
         $rows->getCollection()->transform(function ($row) {
+            $liveProductClass = config('adminui.classes.live_product');
             $row->liveData = $liveProductClass::getLiveData($row);
 
             return $row;
