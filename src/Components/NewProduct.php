@@ -25,7 +25,7 @@ class NewProduct extends Component
 
         $rows = cache()->remember('newproducts', 3600, function () {
             return Product::where('is_active', 1)
-                ->whereNull('parent_id')
+                ->where('parent_id', 0)
                 ->where('quantity', '>=', 1)
                 ->latest()
                 ->paginate($this->limit);
