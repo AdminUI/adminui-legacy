@@ -3,7 +3,6 @@
 namespace AdminUI\AdminUILegacy\Components;
 
 use AdminUI\AdminUI\Models\Product;
-use App\Helpers\LiveProduct;
 use Illuminate\View\Component;
 
 class NewProduct extends Component
@@ -22,6 +21,8 @@ class NewProduct extends Component
 
     public function render()
     {
+        $liveProductClass = config('adminui.classes.live_product');
+
         $rows = cache()->remember('newproducts', 3600, function () {
             return Product::where('is_active', 1)
                 ->whereNull('parent_id')
@@ -31,7 +32,7 @@ class NewProduct extends Component
         });
 
         $rows->getCollection()->transform(function ($row) {
-            $row->liveData = LiveProduct::getLiveData($row);
+            $row->liveData = $liveProductClass::getLiveData($row);
 
             return $row;
         });
