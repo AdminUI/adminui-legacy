@@ -24,7 +24,9 @@ class NewProduct extends Component
 
         $rows = cache()->remember('newproducts', 3600, function () {
             return Product::where('is_active', 1)
-                ->where('parent_id', 0)
+                ->where(function ($query) {
+                    $query->where('parent_id', 0)->orWhereNull('parent_id');
+                })
                 ->where('quantity', '>=', 1)
                 ->latest()
                 ->paginate($this->limit);
@@ -33,7 +35,6 @@ class NewProduct extends Component
         $rows->getCollection()->transform(function ($row) {
             $liveProductClass = config('adminui.classes.live_product');
             $row->liveData = $liveProductClass::getLiveData($row);
-
             return $row;
         });
 
