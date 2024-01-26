@@ -4,6 +4,7 @@ namespace AdminUI\AdminUILegacy\Components;
 
 use AdminUI\AdminUI\Models\Product;
 use Illuminate\View\Component;
+use AdminUI\AdminUI\Helpers\LiveProduct;
 
 class FeaturedProduct extends Component
 {
@@ -32,8 +33,7 @@ class FeaturedProduct extends Component
         });
 
         $rows->getCollection()->transform(function ($row) {
-            $liveProductClass = config('adminui.classes.live_product');
-            $row->liveData = $liveProductClass::getLiveData($row);
+            $row->liveData = app(LiveProduct::class)::getLiveData($row);
 
             return $row;
         });

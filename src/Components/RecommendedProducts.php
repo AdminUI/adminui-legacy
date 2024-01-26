@@ -3,6 +3,7 @@
 namespace AdminUI\AdminUILegacy\Components;
 
 use Illuminate\View\Component;
+use AdminUI\AdminUI\Helpers\LiveProduct;
 
 class RecommendedProducts extends Component
 {
@@ -32,8 +33,7 @@ class RecommendedProducts extends Component
 
         if ($this->products) {
             $this->products->transform(function ($row) {
-                $liveProductClass = config('adminui.classes.live_product');
-                $row->liveData = $liveProductClass::getLiveData($row);
+                $row->liveData = app(LiveProduct::class)::getLiveData($row);
 
                 return $row;
             });
