@@ -1,18 +1,21 @@
 {{-- Add graph tags for better SEO --}}
-@php
-use AdminUI\AdminUI\Helpers\Seo;
-$title = empty(Seo::title()) ? (!isset($data->seo->meta_title) ? $data->name ?? ($data->title ?? '') : $data->seo->meta_title) : Seo::title();
-
-$title .= config('settings.default_meta_title') == '' ? ' | ' . config('app.name') : config('settings.default_meta_title');
-@endphp
-
-<meta name="og:title" property="og:title" content="{{ $title }}" />
-<meta name="og:url" property="og:url" content="{!! url()->current() !!}" />
-<meta name="og:site_name" property="og:site_name" content="{{ config('app.name') }}" />
-
-@if (!empty($data->seo->image))
-    <meta name="og:image" property="og:image" content="{{ $data->seo->image ?? '' }}" />
+<meta property="og:title" content="{!! $data->og_title !!}" />
+<meta property="og:url" content="{!! $data->url !!}" />
+<meta property="og:site_name" content="{!! config('app.name') !!}" />
+@if (!empty($data->og_image))
+<meta property="og:image" content="{!! $data->og_image ?? '' !!}" />
 @endif
-@if (!empty($data->seo->meta_description))
-    <meta name="og:description" property="og:description" content="{{ $data->seo->meta_description }}">
+@if (!empty($data->og_description))
+<meta property="og:description" content="{!! $data->og_description !!}">
+@endif
+
+{{-- Twitter X --}}
+<meta property="twitter:title" content="{!! $data->og_title !!}" />
+<meta property="twitter:url" content="{!! $data->url !!}" />
+<meta property="twitter:site_name" content="{!! config('app.name') !!}" />
+@if (!empty($data->og_image))
+<meta property="twitter:image" content="{!! $data->og_image ?? '' !!}" />
+@endif
+@if (!empty($data->og_description))
+<meta property="twitter:description" content="{!! $data->og_description !!}">
 @endif
