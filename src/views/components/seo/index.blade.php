@@ -2,7 +2,9 @@
 {{-- Robots to index or not --}}
 @use ('AdminUI\AdminUI\Facades\Seo')
 @php
-$seo = Seo::generate($data);
+if (!empty($data)) {
+    $seo = Seo::generate($data);
+}
 @endphp
 
 <x-aui::seo.robots :data="$seo" />
