@@ -52,7 +52,7 @@ class CategoryTree extends Component
 
     public function parentCollection($category)
     {
-        $child = $category->child()
+        $child = $category->children()
             ->where('is_active', true)
             ->orderBy('sort_order', 'ASC')
             ->get();
